@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="habitación1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="habitación6" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="disponibleHab1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="disponibleHab6" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="habitación2" min="-2" max="-2" attributes="0"/>
+                  <Component id="habitación7" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="disponibleHab2" min="-2" max="-2" attributes="0"/>
+                          <Component id="disponibleHab7" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="habitación3" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="habitación8" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="disponibleHab3" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="disponibleHab8" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="habitación4" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="habitación9" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="disponibleHab4" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="disponibleHab9" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace pref="55" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="habitación5" min="-2" max="-2" attributes="0"/>
+                  <Component id="habitación10" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="disponibleHab5" min="-2" max="-2" attributes="0"/>
+                          <Component id="disponibleHab10" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
+              <Component id="habitaciónSeleccionada" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="campoHabitaciónSeleccionada" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+              <Component id="aceptar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="habitación1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="habitación2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="habitación3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="habitación4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="habitación5" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="disponibleHab1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="disponibleHab2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="disponibleHab3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="disponibleHab4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="disponibleHab5" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="habitación6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="habitación7" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="habitación8" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="habitación9" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="habitación10" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="disponibleHab6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="disponibleHab7" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="disponibleHab8" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="disponibleHab9" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="disponibleHab10" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="26" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="habitaciónSeleccionada" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="campoHabitaciónSeleccionada" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="aceptar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="habitaci&#xf3;n1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Habitaci&#xf3;n 1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="disponibleHab1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Disponible"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="habitaci&#xf3;n2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Habitaci&#xf3;n 2"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="disponibleHab2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Disponible"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="habitaci&#xf3;n3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Habitaci&#xf3;n 3"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="habitaci&#xf3;n4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Habitaci&#xf3;n 4"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="habitaci&#xf3;n5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Habitaci&#xf3;n 5"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="disponibleHab3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Disponible"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="disponibleHab4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Disponible"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="disponibleHab5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Disponible"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="habitaci&#xf3;n6">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Habitaci&#xf3;n 6"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="habitaci&#xf3;n7">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Habitaci&#xf3;n 7"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="habitaci&#xf3;n8">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Habitaci&#xf3;n 8"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="habitaci&#xf3;n9">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Habitaci&#xf3;n 9"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="habitaci&#xf3;n10">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Habitaci&#xf3;n 10"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="disponibleHab6">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Disponible"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="disponibleHab7">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Disponible"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="disponibleHab8">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Disponible "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="disponibleHab9">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Disponible"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="disponibleHab10">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Disponible"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="habitaci&#xf3;nSeleccionada">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Habitaci&#xf3;n a reservar:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSpinner" name="campoHabitaci&#xf3;nSeleccionada">
+    </Component>
+    <Component class="javax.swing.JButton" name="aceptar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Aceptar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="aceptarActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>
