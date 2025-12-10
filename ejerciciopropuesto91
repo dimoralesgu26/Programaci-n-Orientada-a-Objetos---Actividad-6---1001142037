@@ -1,0 +1,259 @@
+import tkinter as tk
+from tkinter import ttk, messagebox
+import re
+import os
+
+try:
+    from tkcalendar import Calendar
+    TKCALENDAR_AVAILABLE = True
+except ImportError:
+    TKCALENDAR_AVAILABLE = False
+    
+
+def abrir_datepicker(campo_fecha):
+    top = tk.Toplevel()
+    top.title("Seleccionar fecha")
+    top.geometry("260x260")
+    top.resizable(False, False)
+    
+    cal = Calendar(top, selectmode="day", date_pattern="dd/MM/yyyy")
+    cal.pack(padx=10, pady=8)
+
+    def seleccionar():
+        fecha = cal.get_date()
+        campo_fecha.delete(0, tk.END)
+        campo_fecha.insert(0, fecha)
+        campo_fecha.event_generate("<FocusOut>")
+        top.destroy()
+
+    ttk.Button(top, text="Seleccionar", command=seleccionar).pack(pady=6)
+
+def normalizar_fecha(texto):
+    m = re.fullmatch(r"\s*(\d{1,2})\s*/\s*(\d{1,2})\s*/\s*(\d{2,4})\s*", texto)
+    if not m: return None
+    d, mo, y = int(m.group(1)), int(m.group(2)), int(m.group(3))
+    
+    if y < 100 or not (1 <= d <= 31 and 1 <= mo <= 12):
+        return None
+    return f"{d:02d}/{mo:02d}/{y:04d}"
+
+class VentanaContacto:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Detalles del contacto")
+        self.root.geometry("780x330")
+        self.root.resizable(False, False)
+
+        
+        self.carpeta = "DatosContactos"
+        if not os.path.exists(self.carpeta):
+            os.makedirs(self.carpeta)
+        self.archivo = os.path.join(self.carpeta, "Contactos.txt")
+
+      
+        self.entradas = {}
+
+        
+        self._configurar_layout()
+        self._inicializar_validaciones()
+        self._construir_formulario()
+        self._construir_lista()
+
+       
+        self.cargar_contactos()
+
+    def _configurar_layout(self):
+        outer = tk.Frame(self.root, bg="#cfeed0", padx=8, pady=8)
+        outer.pack(expand=True, fill="both")
+        
+        inner = tk.Frame(outer, bg="#ffffff", padx=12, pady=12)
+        inner.pack(expand=True, fill="both")
+
+        self.frame_izq = tk.Frame(inner, bg="white")
+        self.frame_izq.grid(row=0, column=0, sticky="nw")
+
+        self.frame_der = tk.Frame(inner, bg="white")
+        self.frame_der.grid(row=0, column=1, sticky="ne", padx=(20, 0))
+
+    def _inicializar_validaciones(self):
+        # Para usar en el bucle de creación
+        self.v_letras = (self.root.register(self.validar_letras), "%P")
+        self.v_numeros = (self.root.register(self.validar_numeros), "%P")
+        self.v_fecha = (self.root.register(self.validar_fecha_caracteres), "%P")
+        self.v_direccion = (self.root.register(self.validar_direccion_chars), "%P")
+
+    def _construir_formulario(self):
+        label_font = ("Segoe UI", 10)
+        ancho_std = 36
+
+      
+        campos_config = [
+            ("Nombres:", "nombres", self.v_letras, False),
+            ("Apellidos:", "apellidos", self.v_letras, False),
+            ("Fecha nacimiento:", "fecha", self.v_fecha, True),
+            ("Dirección:", "direccion", self.v_direccion, False),
+            ("Teléfono:", "telefono", self.v_numeros, False),
+            ("Correo:", "correo", None, False)
+        ]
+
+      
+        for i, (txt_lbl, clave, validacion, usa_cal) in enumerate(campos_config):
+            
+            tk.Label(self.frame_izq, text=txt_lbl, bg="white", font=label_font)\
+                .grid(row=i, column=0, sticky="w", pady=4)
+            
+           
+            opts = {"validate": "key", "validatecommand": validacion} if validacion else {}
+            ancho = ancho_std - 4 if usa_cal else ancho_std
+            
+            ent = tk.Entry(self.frame_izq, width=ancho, **opts)
+            ent.grid(row=i, column=1, sticky="w")
+            
+            self.entradas[clave] = ent
+
+            
+            if usa_cal:
+                btn = tk.Button(self.frame_izq, text="📅", width=3, 
+                                command=lambda e=ent: abrir_datepicker(e))
+                btn.grid(row=i, column=2, padx=6)
+                ent.bind("<FocusOut>", self.on_fecha_focus_out)
+
+       
+        btn_add = tk.Button(self.frame_izq, text="Agregar", width=18, command=self.agregar_contacto)
+        btn_add.grid(row=len(campos_config), column=0, columnspan=2, pady=12, sticky="w")
+
+    def _construir_lista(self):
+        self.lb = tk.Listbox(self.frame_der, width=48, height=14)
+        self.lb.pack(side="left", fill="y")
+
+        sb = tk.Scrollbar(self.frame_der, orient="vertical", command=self.lb.yview)
+        sb.pack(side="right", fill="y")
+        self.lb.config(yscrollcommand=sb.set)
+
+   
+
+    def validar_letras(self, texto):
+        return texto == "" or bool(re.fullmatch(r"[A-Za-zÁÉÍÓÚáéíóúÑñ ]*", texto))
+
+    def validar_numeros(self, texto):
+        return texto == "" or texto.isdigit()
+
+    def validar_fecha_caracteres(self, texto):
+        return texto == "" or bool(re.fullmatch(r"[0-9/]*", texto))
+
+    def validar_direccion_chars(self, texto):
+        return texto == "" or bool(re.fullmatch(r"[A-Za-z0-9ÁÉÍÓÚáéíóúÑñ #\-\.,]*", texto))
+
+    def correo_valido(self, correo):
+        patron = r"^[A-Za-z0-9\._\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,63}$"
+        return bool(re.fullmatch(patron, correo))
+
+    def on_fecha_focus_out(self, event):
+        ent_fecha = self.entradas["fecha"]
+        texto = ent_fecha.get().strip()
+        if not texto: return
+        
+        normal = normalizar_fecha(texto)
+        if normal is None:
+            messagebox.showinfo("Mensaje", "Fecha inválida\n\nUse el formato DD/MM/YYYY")
+            ent_fecha.focus_set() # Opcional: regresar el foco
+            return
+        
+        ent_fecha.delete(0, tk.END)
+        ent_fecha.insert(0, normal)
+
+  
+
+    def cargar_contactos(self):
+        if not os.path.exists(self.archivo):
+            return
+        
+        
+        self.lb.delete(0, tk.END)
+
+        with open(self.archivo, "r", encoding="utf-8") as f:
+            contenido = f.read()
+
+      
+        bloques = contenido.split("-------------------------")
+
+        for bloque in bloques:
+            if not bloque.strip(): continue
+
+            datos = {}
+            lines = bloque.strip().split("\n")
+            
+            for linea in lines:
+                if ": " in linea:
+                    clave, valor = linea.split(": ", 1)
+                    datos[clave] = valor.strip()
+
+            
+            if "Nombre" in datos and "Correo" in datos:
+                cadena = (f"{datos.get('Nombre','')}-{datos.get('Apellido','')}-"
+                          f"{datos.get('Fecha de nacimiento','')}-{datos.get('Dirección','')}-"
+                          f"{datos.get('Teléfono','')}-{datos.get('Correo','')}")
+                self.lb.insert(tk.END, cadena)
+
+    def agregar_contacto(self):
+        # Recolectar datos del diccionario de entradas
+        vals = {k: v.get().strip() for k, v in self.entradas.items()}
+
+        
+        if not (vals["nombres"] and vals["apellidos"] and vals["fecha"] and 
+                vals["telefono"] and vals["correo"]):
+            messagebox.showinfo("Mensaje", "Error: No se permiten campos vacíos (excepto dirección).")
+            return
+
+        fecha_norm = normalizar_fecha(vals["fecha"])
+        if not fecha_norm:
+            messagebox.showinfo("Mensaje", "Fecha inválida.")
+            return
+        vals["fecha"] = fecha_norm # Actualiza con la normalizada
+
+        if not vals["telefono"].isdigit() or len(vals["telefono"]) < 7:
+            messagebox.showinfo("Mensaje", "Teléfono inválido.")
+            return
+
+        if not self.correo_valido(vals["correo"]):
+            messagebox.showinfo("Mensaje", "Correo inválido.")
+            return
+
+        if not vals["direccion"]: vals["direccion"] = "null"
+
+       
+        cadena_match = f"{vals['nombres']}-{vals['apellidos']}-{vals['fecha']
+        items_actuales = self.lb.get(0, tk.END)
+        for item in items_actuales:
+            partes = item.split("-")
+            if (partes[0] == vals["nombres"] and partes[1] == vals["apellidos"] and 
+                partes[2] == vals["fecha"] and partes[4] == vals["telefono"]):
+                messagebox.showinfo("Mensaje", "El contacto ya está registrado.")
+                return
+
+    
+        nuevo_item = (f"{vals['nombres']}-{vals['apellidos']}-{vals['fecha']}-"
+                      f"{vals['direccion']}-{vals['telefono']}-{vals['correo']}")
+        self.lb.insert(tk.END, nuevo_item)
+
+        bloque_texto = (
+            f"Nombre: {vals['nombres']}\n"
+            f"Apellido: {vals['apellidos']}\n"
+            f"Fecha de nacimiento: {vals['fecha']}\n"
+            f"Dirección: {vals['direccion']}\n"
+            f"Teléfono: {vals['telefono']}\n"
+            f"Correo: {vals['correo']}\n"
+            "-------------------------\n"
+        )
+
+        with open(self.archivo, "a", encoding="utf-8") as f:
+            f.write(bloque_texto)
+
+    
+        for ent in self.entradas.values():
+            ent.delete(0, tk.END)
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = VentanaContacto(root)
+    root.mainloop()
